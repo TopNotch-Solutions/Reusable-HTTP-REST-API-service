@@ -1,10 +1,12 @@
 import './App.css';
+import useFetch from './hooks/useFetch';
 import Services from './services/request';
 import { useCallback, useEffect, useState } from 'react';
 
 function App() {
   const requests = new Services();
   const [allProducts, setAllProducts] = useState([]);
+  const { error, isPending, data: blogs } = useFetch('http://localhost:8000/blogs')
 
   useEffect(() => {
     const fetchProducts = async () => {
